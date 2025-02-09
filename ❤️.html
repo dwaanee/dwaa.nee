@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #f8a8a8, #fccccc);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: none;
+            width: 90%;
+            max-width: 400px;
+            padding: 20px;
+            background: #fff8c2;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .sticky {
+            display: inline-block;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            background: #fff8c2;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+
+        button {
+            background: #ff5c5c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #ff3333;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+
+        .gif-container {
+            margin-top: 10px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="startScreen" style="display: block;">
+    <button onclick="showPinScreen()">Click me, baby 😉</button>
+</div>
+
+<div id="pinScreen" class="container hidden">
+    <div class="sticky">It’s our special day 💖</div>
+    <input type="password" id="pinInput" placeholder="Ayusin mo!">
+    <button onclick="checkPin()">Submit</button>
+</div>
+
+<div id="message1" class="container hidden">
+    <div class="sticky">Owkii, you passed! Hihi. I love youuuu ❤️</div>
+    <button onclick="showNextMessage()">Next</button>
+</div>
+
+<div id="message2" class="container hidden">
+    <div class="sticky">
+        Mahal, I want to ask you out this coming Hearts Day. It may not be in a fancy or expensive restaurant, but what truly matters to me is spending time with you. No place could ever be more special than wherever you are. I hope you’ll say yes and let me make this day as beautiful as you.
+    </div>
+    <button onclick="showQuestion()">Next</button>
+</div>
+
+<div id="questionScreen" class="container hidden">
+    <div class="sticky">Will you be my Valentine date? ❤️</div>
+    <div class="button-container">
+        <button onclick="showLoveMessage()">Yes</button>
+        <button onclick="showHeartbreak()">No 💔</button>
+    </div>
+</div>
+
+<div id="loveMessage" class="container hidden">
+    <div class="sticky">I love youuuu! This is for you, my skibidi sigma pookie bear. 💙</div>
+    <div class="gif-container">
+        <iframe src="https://tenor.com/embed/26525351" width="100%" height="300px" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
+<div id="heartbrokenScreen" class="container hidden">
+    <div class="sticky">💔 Awts! Sakit naman idol... 💔</div>
+    <button onclick="goBack()">Ulitin mo :((</button>
+</div>
+
+<script>
+    function showPinScreen() {
+        document.getElementById("startScreen").style.display = "none";
+        document.getElementById("pinScreen").style.display = "block";
+    }
+
+    function checkPin() {
+        var pin = document.getElementById("pinInput").value;
+        if (pin === "121919") {
+            document.getElementById("pinScreen").style.display = "none";
+            document.getElementById("message1").style.display = "block";
+        } else {
+            alert("Wrong PIN! Try again.");
+        }
+    }
+
+    function showNextMessage() {
+        document.getElementById("message1").style.display = "none";
+        document.getElementById("message2").style.display = "block";
+    }
+
+    function showQuestion() {
+        document.getElementById("message2").style.display = "none";
+        document.getElementById("questionScreen").style.display = "block";
+    }
+
+    function showLoveMessage() {
+        document.getElementById("questionScreen").style.display = "none";
+        document.getElementById("loveMessage").style.display = "block";
+    }
+
+    function showHeartbreak() {
+        document.getElementById("questionScreen").style.display = "none";
+        document.getElementById("heartbrokenScreen").style.display = "block";
+    }
+
+    function goBack() {
+        document.getElementById("heartbrokenScreen").style.display = "none";
+        document.getElementById("questionScreen").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
